@@ -1,0 +1,10 @@
+.menu-item {
+  font-weight: 900;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+
+.menu-item:hover {
+  transform: translateX(10px) scale(1.1);
+  color: #67e8f9;
+}

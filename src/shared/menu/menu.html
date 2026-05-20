@@ -1,0 +1,68 @@
+<div class="h-full text-white relative">
+
+  <!-- 🖥️ DESKTOP SIDEBAR -->
+  <aside
+    class="hidden md:flex flex-col h-full bg-[#050816] transition-all duration-300 overflow-hidden"
+    [class.w-[320px]]="!desktopCollapsed"
+    [class.w-[55px]]="desktopCollapsed"
+  >
+
+    <!-- TOP BAR -->
+    <div class="p-4 flex justify-end">
+      <button
+        (click)="toggleDesktop()"
+        class="text-cyan-300 text-2xl"
+      >
+        ☰
+      </button>
+    </div>
+
+    <!-- MENU ITEMS -->
+    <nav class="flex flex-col gap-8 p-6">
+
+      @for (item of menuItems; track item) {
+
+        <a href="#" class="menu-item">
+          @if (!desktopCollapsed) {
+            {{ item }}
+          }
+        </a>
+
+      }
+
+    </nav>
+
+  </aside>
+
+  <button
+  class="fixed top-4 left-4 z-50 text-cyan-300 text-3xl md:hidden"
+  (click)="toggleMobile()"
+>
+  ☰
+</button>
+
+  <!-- 📱 MOBILE OVERLAY -->
+<div
+  class="fixed inset-0 bg-[#050816] z-50 flex flex-col md:hidden transition-transform duration-300"
+  [style.transform]="mobileOpen ? 'translateX(0%)' : 'translateX(-100%)'"
+>
+
+    <div class="p-4 flex justify-end">
+      <button (click)="toggleMobile()" class="text-cyan-300 text-3xl">
+        ✕
+      </button>
+    </div>
+
+    <nav class="flex flex-col gap-8 p-6">
+
+      @for (item of menuItems; track item) {
+        <a href="#" class="menu-item text-4xl">
+          {{ item }}
+        </a>
+      }
+
+    </nav>
+
+  </div>
+
+</div>
